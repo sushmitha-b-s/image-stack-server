@@ -1,62 +1,60 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Image Stacking application
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Table of contents:
 
-## About Laravel
+-   **[About the project](#about-the-project)**
+-   **[Technologies used](#technologies-used)**
+-   **[Features](#features)**
+-   **[Steps to run the project](#steps-to-run-the-project)**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## About the project
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This application shows the possible variations of a two-dimensional array of images as layers, such that every image from each row of the array is stacked on top of every other image. This repository contains only the front-end code of the application. To check the front-end code, visit [Front End code](https://github.com/sushmitha-b-s/image-stack-client)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Technologies used
 
-## Learning Laravel
+-   Frontend
+    -   HTML5, CSS3, SCSS, JavaScript, Vue.js and Vuex.
+-   Backend
+    -   PHP, MySQL and Laravel 8.0
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   One variation includes 4 image layers stacked on top of each other where images are either png/transparent type.
+-   As a user, the first image upload must be of the base layer (1.e, Array index 0).
+-   The user can add upto 4 layers of images.
+-   The user can add a new image by selecting the array index (which specifies the layer) and uploading an image.
+-   The user can regenerate other possible variations using regenerate button.
 
-## Laravel Sponsors
+## Steps to run the project
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1. Clone the repository.
+    ```
+    $ git clone git@github.com:sushmitha-b-s/image-stack-server.git
+    $ cd image-stack-server
+    ```
+2. Modify .env file based on your database info (DB_DATABASE, DB_USERNAME and DB_PASSWORD). For MY SQL, add
 
-### Premium Partners
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+3. Run the below command
 
-## Contributing
+    ```
+    php artisan serve --host=localhost --port=8000
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. Routes.
 
-## Code of Conduct
+    ```
+    # Public
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    GET   /images
 
-## Security Vulnerabilities
+    POST   /images
+    @body: Image file, Layer index
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    ```
