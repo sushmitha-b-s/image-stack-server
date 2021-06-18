@@ -24,7 +24,7 @@ class ImagesController extends Controller
     public function store(Request $request) {
         $validated = $request->validate([
             'arrayIndex' => 'required',
-            'imageFile' => 'required|image|max:2000'
+            'imageFile' => 'required|image|mimes:png,gif|max:2000'  //allow only png and gif images as only they support transparency.
         ]);
 
         //get file extension and set fileName
