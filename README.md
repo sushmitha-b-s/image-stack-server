@@ -28,14 +28,12 @@ This application shows the possible variations of a two-dimensional array of ima
 
 ## Steps to run the project
 
-2. Clone the repository.
+1. Clone the repository.
     ```
     $ git clone git@github.com:sushmitha-b-s/image-stack-server.git
     $ cd image-stack-server
     ```
-3. Modify .env file based on your database info (DB_DATABASE, DB_USERNAME and DB_PASSWORD)
-
-For MY SQL, add
+2. Modify .env file based on your database info (DB_DATABASE, DB_USERNAME and DB_PASSWORD). For MY SQL, add
 
     ```
     DB_CONNECTION=mysql
@@ -43,13 +41,13 @@ For MY SQL, add
     DB_PORT=3306
     ```
 
-4. Run the below command
+3. Run the below command
 
     ```
     php artisan serve --host=localhost --port=8000
     ```
 
-5. Routes.
+4. Routes.
 
     ```
     # Public
